@@ -1,2 +1,3 @@
-# usp.ach2117.cubo-3d
-USP - ACH2117 - Computação Gráfica - Implementação de um cubo 3D em movimentação utilizando OpenGL
+# USP - ACH2117 - Cubo 3D
+
+> Implementação de um cubo 3D em movimentação utilizando OpenGL
