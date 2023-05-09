@@ -32,11 +32,10 @@ class Window(mglw.WindowConfig):
             attribute_names = ["pos"]
         )
         self.vao.buffer(
-            buffer = cube.textures.tobytes(),
+            buffer = cube.texture.tobytes(),
             buffer_format = "2f",
             attribute_names = ["in_tex"]
         )
-        self.vao.index_buffer(cube.faces.tobytes())
 
         self.projection = glm.perspective(
             glm.radians(45.0),
