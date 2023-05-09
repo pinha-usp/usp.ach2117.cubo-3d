@@ -1,6 +1,7 @@
 import glm
 import pathlib
 import numpy as np
+from cube import Cube
 import moderngl as mgl
 import moderngl_window as mglw
 from moderngl_window.opengl.vao import VAO
@@ -20,19 +21,22 @@ class Window(mglw.WindowConfig):
             fragment_shader = "shaders/default.frag",
         )
 
-        self.vertices = np.array([
-            [-0.5, 0.8, 0.0],
-            [0.5, 0.8, 0.0],
-            [0.5, -0.8, 0.0],
-            [-0.5, -0.8, 0.0]
-        ], dtype=np.float32)
+        cube = Cube()
 
-        self.vao = VAO(mode = mgl.TRIANGLE_FAN)
+        self.texture = self.load_texture_2d("textures/box.jpg")
+
+        self.vao = VAO(mode = mgl.TRIANGLES)
         self.vao.buffer(
-            buffer = self.vertices.tobytes(),
+            buffer = cube.vertices.tobytes(),
             buffer_format = "3f",
             attribute_names = ["pos"]
         )
+        self.vao.buffer(
+            buffer = cube.textures.tobytes(),
+            buffer_format = "2f",
+            attribute_names = ["in_tex"]
+        )
+        self.vao.index_buffer(cube.faces.tobytes())
 
         self.projection = glm.perspective(
             glm.radians(45.0),
@@ -42,26 +46,28 @@ class Window(mglw.WindowConfig):
         )
 
     def render(self, time, frametime):
-        self.ctx.clear()
+        self.ctx.enable(mgl.DEPTH_TEST)
 
         self.model = glm.translate(
             glm.mat4(1.0),
-            glm.vec3(0.0, 0.0, -10.0)
+            glm.vec3(0.0, 0.0, -2.0)
         )
 
         self.model = glm.rotate(
             self.model,
-            glm.radians(-55.0 + time * 100),
-            glm.vec3(1.0, 0.0, 0.0)
+            glm.radians(-25.0 + time * 50),
+            glm.vec3(1.0, 1.0, 0.0)
         )
 
         self.view = glm.translate(
             glm.mat4(1.0),
-            glm.vec3(0.0, 0.0, 1.0 * time)
+            glm.vec3(0.0, 0.0, 1.0)
         )
 
         self.program["model"].write(self.model)
         self.program["view"].write(self.view)
         self.program["projection"].write(self.projection)
+
+        self.texture.use()
 
         self.vao.render(self.program)
