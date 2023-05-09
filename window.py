@@ -10,8 +10,8 @@ class Window(mglw.WindowConfig):
 
     gl_version = (3, 3)
     title = "Cube"
-    window_size = (800, 600)
     resource_dir = pathlib.Path("resources")
+    fullscreen = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -47,9 +47,11 @@ class Window(mglw.WindowConfig):
     def render(self, time, frametime):
         self.ctx.enable(mgl.DEPTH_TEST)
 
+        self.model = glm.mat4(1.0)
+
         self.model = glm.translate(
-            glm.mat4(1.0),
-            glm.vec3(0.0, 0.0, -2.0)
+            self.model,
+            glm.vec3(0.0, 0.0, -8.0)
         )
 
         self.model = glm.rotate(
