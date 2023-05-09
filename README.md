@@ -12,3 +12,23 @@ Para fazer os cálculos de rotação, translação e projeção perspectiva, a b
 <div align="center">
   <img src="https://github.com/willpinha/usp.ach2117.cubo-3d/assets/86596621/2efac624-9cf5-47b5-baf3-65de34c80993">
 </div>
+
+## Como executar?
+
+Instale as dependências do projeto:
+
+```
+python install -r requirements.txt
+```
+
+Após, é só rodar o script principal:
+
+```
+python main.py
+```
+
+> **Warning**
+> A versão Python 3.10 foi utilizada
+
+> **Note**
+> A tela ficará em fullscreen. Para sair do programa, basta apertar <kbd>ESC</kbd>
