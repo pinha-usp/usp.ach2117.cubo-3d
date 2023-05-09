@@ -10,7 +10,7 @@ cubo. Também foi utilizada uma textura no formato de uma caixa em cada face do 
 Para fazer os cálculos de rotação, translação e projeção perspectiva, a biblioteca [PyGLM](https://github.com/Zuzu-Typ/PyGLM) foi utilizada
 
 <div align="center">
-  <img src="https://github.com/willpinha/usp.ach2117.cubo-3d/assets/86596621/2efac624-9cf5-47b5-baf3-65de34c80993">
+  <img src="https://github.com/willpinha/usp.ach2117.cubo-3d/assets/86596621/fc785551-679e-4c6d-a165-9a6e6bccbe19">
 </div>
 
 ## Como executar?
